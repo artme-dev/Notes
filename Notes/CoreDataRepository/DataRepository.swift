@@ -9,14 +9,14 @@ import CoreData
 
 protocol DataRepository {
     associatedtype Entity: NSManagedObject
-
-    func get(using predicate: NSPredicate?,
-             sortDescriptors: [NSSortDescriptor]? ,
-             fetchLimit: Int?) throws -> [Entity]
-
+    
+    func getItems(using predicate: NSPredicate?,
+                  sortDescriptors: [NSSortDescriptor]? ,
+                  fetchLimit: Int?) throws -> [Entity]
+    
     func create() throws -> Entity
-
-    func delete(entity: Entity) throws
+    
+    func delete(item: Entity) throws
 
     func deleteAll(using predicate: NSPredicate?) throws
 

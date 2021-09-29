@@ -19,9 +19,9 @@ class CoreDataRepository<Entity: NSManagedObject>: DataRepository {
         self.managedContext = managedObjectContext
     }
     
-    func get(using predicate: NSPredicate?,
-             sortDescriptors: [NSSortDescriptor]? = nil,
-             fetchLimit: Int? = nil) throws -> [Entity] {
+    func getItems(using predicate: NSPredicate? = nil,
+                  sortDescriptors: [NSSortDescriptor]? = nil,
+                  fetchLimit: Int? = nil) throws -> [Entity] {
         
         let fetchRequest = Entity.fetchRequest()
         fetchRequest.predicate = predicate
@@ -47,8 +47,8 @@ class CoreDataRepository<Entity: NSManagedObject>: DataRepository {
         return managedObject
     }
 
-    func delete(entity: Entity) throws {
-        managedContext.delete(entity)
+    func delete(item: Entity) throws {
+        managedContext.delete(item)
     }
     
     func deleteAll(using predicate: NSPredicate?) throws {

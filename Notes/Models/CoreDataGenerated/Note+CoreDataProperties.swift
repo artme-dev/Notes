@@ -15,7 +15,7 @@ extension Note {
     }
 
     @NSManaged public var title: String?
-    @NSManaged public var creationDate: Date?
+    @NSManaged public var modificationDate: Date?
     @NSManaged public var text: String?
 
 }

@@ -28,6 +28,10 @@ extension UIColor {
         return UIColor(named: "SecondaryTextColor")!
     }
     
+    static var tertiaryText: UIColor {
+        return UIColor(named: "TertiaryTextColor")!
+    }
+    
     static var background: UIColor {
         return UIColor(named: "BackgroundColor")!
     }

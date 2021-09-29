@@ -12,11 +12,11 @@ class NoteTableViewCell: UITableViewCell {
     enum Constants {
         static let titleFont: UIFont = .systemFont(ofSize: 20)
         static let textFont: UIFont = .systemFont(ofSize: 16)
+        static let dateFont: UIFont = .systemFont(ofSize: 16)
         
         static let titleColor: UIColor = .primaryText
         static let textColor: UIColor = .secondaryText
-        static let noteColor: UIColor = .notes
-        static let noteCurlColor: UIColor = .noteCurl
+        static let dateColor: UIColor = .tertiaryText
         
         static let titlePlaceholder = "New note"
         static let textPlaceholder = "No additional text"
@@ -24,8 +24,8 @@ class NoteTableViewCell: UITableViewCell {
     
     private let stickyView: StickyShapeView = {
         let stickyView = StickyShapeView()
-        stickyView.noteColor = Constants.noteColor.cgColor
-        stickyView.curlColor = Constants.noteCurlColor.cgColor
+        stickyView.noteColor = UIColor.notes.cgColor
+        stickyView.curlColor = UIColor.noteCurl.cgColor
         stickyView.translatesAutoresizingMaskIntoConstraints = false
         return stickyView
     }()
@@ -53,6 +53,12 @@ class NoteTableViewCell: UITableViewCell {
         label.textColor = Constants.textColor
         return label
     }()
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = Constants.dateFont
+        label.textColor = Constants.dateColor
+        return label
+    }()
     
     var title: String? {
         get { titleLabel.text }
@@ -64,13 +70,15 @@ class NoteTableViewCell: UITableViewCell {
             titleLabel.text = title
         }
     }
-    private func setTextPreview(text: String?, date: String) {
-        guard let textPreview = text, !textPreview.isEmpty else {
-            textPreviewLabel.text = Constants.textPlaceholder
-            return
+    var textPreview: String? {
+        get { textPreviewLabel.text }
+        set {
+            guard let text = newValue, !text.isEmpty else {
+                textPreviewLabel.text = Constants.textPlaceholder
+                return
+            }
+            textPreviewLabel.text = text
         }
-        let combinedPreview = "\(date) | \(textPreview)"
-        textPreviewLabel.text = combinedPreview
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -91,6 +99,7 @@ class NoteTableViewCell: UITableViewCell {
         
         containerStackView.addArrangedSubview(titleLabel)
         containerStackView.addArrangedSubview(textPreviewLabel)
+        containerStackView.addArrangedSubview(dateLabel)
         
         setContainerConstraints()
     }
@@ -104,6 +113,7 @@ class NoteTableViewCell: UITableViewCell {
     
     func configure(from viewData: NoteViewData) {
         title = viewData.title
-        setTextPreview(text: viewData.text, date: viewData.creationDate)
+        textPreview = viewData.text
+        dateLabel.text = viewData.creationDate
     }
 }

@@ -12,3 +12,8 @@ struct NoteViewData {
     let creationDate: String
     let text: String?
 }
+
+struct NoteInputData {
+    let title: String?
+    let text: String?
+}
