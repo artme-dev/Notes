@@ -9,7 +9,7 @@ import Foundation
 
 struct NoteInfo {
     let title: String
-    let text: String
+    let text: NSAttributedString
 }
 
 protocol NotesRepositoryProtocol {
@@ -77,7 +77,7 @@ class NotesRepository: NotesRepositoryProtocol {
     }
     
     func createEmptyNote() -> Note? {
-        let emptyNoteInfo = NoteInfo(title: "", text: "")
+        let emptyNoteInfo = NoteInfo(title: "", text: NSAttributedString())
         let note = createNote(using: emptyNoteInfo)
         return note
     }

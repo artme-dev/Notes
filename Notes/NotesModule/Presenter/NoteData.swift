@@ -10,10 +10,10 @@ import Foundation
 struct NoteViewData {
     let title: String?
     let creationDate: String
-    let text: String?
+    let text: NSAttributedString?
 }
 
 struct NoteInputData {
     let title: String?
-    let text: String?
+    let text: NSAttributedString?
 }

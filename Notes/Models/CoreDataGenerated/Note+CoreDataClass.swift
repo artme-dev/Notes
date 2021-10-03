@@ -2,7 +2,7 @@
 //  Note+CoreDataClass.swift
 //  Notes
 //
-//  Created by Артём on 28.09.2021.
+//  Created by Артём on 03.10.2021.
 //
 //
 

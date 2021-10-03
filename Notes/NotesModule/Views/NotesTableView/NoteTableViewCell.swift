@@ -107,13 +107,13 @@ class NoteTableViewCell: UITableViewCell {
     private func setContainerConstraints() {
         stickyView.fillSuperviewSafe()
         
-        let stackViewInstets = ConstraintsConstants(top: 16, trailing: 32, bottom: 16, leading: 16)
-        containerStackView.fillSuperview(using: stackViewInstets)
+        let stackViewInsets = ConstraintsConstants(top: 16, trailing: 32, bottom: 16, leading: 16)
+        containerStackView.fillSuperview(using: stackViewInsets)
     }
     
     func configure(from viewData: NoteViewData) {
         title = viewData.title
-        textPreview = viewData.text
+        textPreview = viewData.text?.string
         dateLabel.text = viewData.creationDate
     }
 }

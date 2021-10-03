@@ -14,7 +14,7 @@ class StickyShapeView: UIView {
     
     var cornerRadius: CGFloat = 8
     var curlInset: CGFloat = 2
-    var curleSize = CGSize(width: 30, height: 30)
+    var curlSize = CGSize(width: 30, height: 30)
     
     var noteColor: CGColor? {
         get { return noteLayer.fillColor }
@@ -45,8 +45,8 @@ class StickyShapeView: UIView {
         updateShapesPaths()
     }
     private func updateShapesPaths() {
-        curlLayer.path = createCurlPath(noteSize: frame.size, curlSize: curleSize).cgPath
-        noteLayer.path = createNotePath(noteSize: frame.size, curlSize: curleSize).cgPath
+        curlLayer.path = createCurlPath(noteSize: frame.size, curlSize: curlSize).cgPath
+        noteLayer.path = createNotePath(noteSize: frame.size, curlSize: curlSize).cgPath
     }
     
     private func setColors() {

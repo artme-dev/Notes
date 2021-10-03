@@ -9,11 +9,7 @@ import UIKit
 
 class NotesTableVC: UITableViewController {
     
-    private let testNote = NoteViewData(title: "Super Puper Title",
-                                        creationDate: "19.09.2021",
-                                        text: "n English, tonne is the established spelling alternative to metric ton.")
-    
-    private let cellReuseIdentifier = "notesTabeCell"
+    private let cellReuseIdentifier = "notesTableCell"
     private var notes: [NoteViewData]?
     var presenter: NotesPresenterProtocol?
 

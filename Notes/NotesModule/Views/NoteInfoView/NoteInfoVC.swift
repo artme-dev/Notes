@@ -60,9 +60,9 @@ class NoteInfoVC: UIViewController {
         get { return titleField.text }
         set { titleField.text = newValue  }
     }
-    var noteText: String? {
-        get { return textView.text }
-        set { textView.text = newValue  }
+    var noteText: NSAttributedString? {
+        get { return textView.attributedText }
+        set { textView.attributedText = newValue  }
     }
     var noteInputData: NoteInputData {
         return NoteInputData(title: noteTitle,
@@ -82,6 +82,7 @@ class NoteInfoVC: UIViewController {
         addSubviews()
         setConstraints()
         addKeyboardObservers()
+        addInputAccessoryView()
     }
     
     private func addFieldObservers() {
@@ -107,10 +108,17 @@ class NoteInfoVC: UIViewController {
     func configure(from viewData: NoteViewData) {
         noteTitle = viewData.title
         dateLabel.text = viewData.creationDate
-        noteText = viewData.text
         
-        guard let noteText = noteText else { return }
-        isTextPlaceholderActive = noteText.isEmpty
+        if let text = viewData.text {
+            let mutableAttributedString = NSMutableAttributedString(attributedString: text)
+            let textLength = text.string.count
+            mutableAttributedString.addAttribute(NSAttributedString.Key.font,
+                                                 value: Constants.textFont,
+                                                 range: NSRange(location: 0, length: textLength))
+            noteText = mutableAttributedString
+        }
+        
+        isTextPlaceholderActive = noteText != nil && noteText!.string.isEmpty
     }
     
     @objc func applyChanges() {
@@ -138,4 +146,45 @@ class NoteInfoVC: UIViewController {
         get { return !placeholderLabel.isHidden }
         set { placeholderLabel.isHidden = !newValue }
     }
+    
+    // MARK: Input Accessory View
+    
+    private func addInputAccessoryView() {
+        
+        let bar = UIToolbar()
+        
+        let boldTextButton = UIBarButtonItem(title: "Bold",
+                                             style: .plain,
+                                             target: textView,
+                                             action: #selector(UITextView.toggleBoldface(_:)))
+
+        let italicTextButton = UIBarButtonItem(title: "Italic",
+                                               style: .plain,
+                                               target: textView,
+                                               action: #selector(UITextView.toggleItalics(_:)))
+
+        let underlineTextButton = UIBarButtonItem(title: "Underline",
+                                                  style: .plain,
+                                                  target: textView,
+                                                  action: #selector(UITextView.toggleUnderline(_:)))
+
+        let highlightTextButton = UIBarButtonItem(title: "Highlight",
+                                                  style: .plain,
+                                                  target: textView,
+                                                  action: #selector(UITextView.toggleHighlight))
+
+        bar.items = [
+            boldTextButton,
+            UIBarButtonItem.flexibleSpace(),
+            italicTextButton,
+            UIBarButtonItem.flexibleSpace(),
+            underlineTextButton,
+            UIBarButtonItem.flexibleSpace(),
+            highlightTextButton
+        ]
+        bar.sizeToFit()
+
+        textView.inputAccessoryView = bar
+    }
+
 }

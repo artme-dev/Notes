@@ -25,7 +25,6 @@ extension NoteInfoVC {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
         guard let keyboardSize = (keyboardFrame as? NSValue)?.cgRectValue else {
             return

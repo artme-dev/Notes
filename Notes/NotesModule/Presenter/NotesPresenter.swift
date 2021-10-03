@@ -24,6 +24,7 @@ protocol NotesPresenterProtocol {
 class NotesPresenter {
     private let repository: NotesRepositoryProtocol
     weak var view: NotesViewProtocol?
+    private let haveBeenLoadedDefaultsKey = "haveBeenLoaded"
     
     private var showedNotes: [Note]?
     private var showedNote: Note?
@@ -63,7 +64,7 @@ class NotesPresenter {
     
     private func noteInfo(from noteInputData: NoteInputData) -> NoteInfo {
         return NoteInfo(title: noteInputData.title ?? "",
-                        text: noteInputData.text ?? "")
+                        text: noteInputData.text ?? NSAttributedString())
     }
     
     private func updateShowedNotes() {
@@ -84,12 +85,26 @@ class NotesPresenter {
         showedNote = note
     }
     
+    private func handleFirstAppLoad() {
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: haveBeenLoadedDefaultsKey) {
+            
+            let noteText = NSAttributedString(string: "Let's make your first note")
+            let preloadNoteInfo = NoteInfo(title: "Welcome!",
+                                           text: noteText)
+            
+            repository.createNote(using: preloadNoteInfo)
+            defaults.set(true, forKey: haveBeenLoadedDefaultsKey)
+        }
+    }
+    
 }
 
 // MARK: Notes Presenter Protocol
 
 extension NotesPresenter: NotesPresenterProtocol {
     func viewWillAppear() {
+        handleFirstAppLoad()
         updateShowedNotes()
     }
     
