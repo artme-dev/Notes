@@ -11,17 +11,6 @@ Notes is the best place to jot down quick thoughts or to save longer notes of al
 
 Download the app and run it to get more information inside.
 
-## Development TO-DO
-
-The application functionality to be added soon:
-
-- [ ] Creation of the welcome note
-- [ ] Application localisation
-- [ ] Pinning note to top
-- [ ] Notes search
-- [ ] Highlighting note text (headers, font style)
-- [ ] Attaching photos to note
-
 ## Meta
 
 Artme Kononov - artme.x@ya.ru
