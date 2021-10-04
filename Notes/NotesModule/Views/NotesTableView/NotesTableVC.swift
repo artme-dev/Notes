@@ -12,7 +12,7 @@ class NotesTableVC: UITableViewController {
     private let cellReuseIdentifier = "notesTableCell"
     private var notes: [NoteViewData]?
     var presenter: NotesPresenterProtocol?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -20,6 +20,27 @@ class NotesTableVC: UITableViewController {
         tableView.register(NoteTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         configureTableView()
         configureNavigationBar()
+        addInfoLabel()
+    }
+    
+    private let infoLabel: UILabel = {
+        let infoLabel = UILabel()
+        infoLabel.text = "No notes"
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.font = NoteTableViewCell.Constants.textFont
+        infoLabel.textColor = NoteTableViewCell.Constants.dateColor
+        infoLabel.isHidden = true
+        return infoLabel
+    }()
+    
+    private func addInfoLabel() {
+        tableView.addSubview(infoLabel)
+        infoLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        infoLabel.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 16).isActive = true
+    }
+    
+    private func updateInfoLabel() {
+        infoLabel.isHidden = !(notes == nil || notes!.isEmpty)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +116,7 @@ class NotesTableVC: UITableViewController {
 extension NotesTableVC: NotesViewProtocol {
     func showNotes(_ notes: [NoteViewData]) {
         self.notes = notes
+        updateInfoLabel()
         tableView.reloadData()
     }
     
@@ -113,5 +135,6 @@ extension NotesTableVC: NotesViewProtocol {
         notes?.remove(at: index)
         tableView.deleteRows(at: [indexPath],
                              with: .automatic)
+        updateInfoLabel()
     }
 }

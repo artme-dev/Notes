@@ -89,9 +89,9 @@ class NotesPresenter {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: haveBeenLoadedDefaultsKey) {
             
-            let noteText = NSAttributedString(string: "Let's make your first note")
-            let preloadNoteInfo = NoteInfo(title: "Welcome!",
-                                           text: noteText)
+            let noteTitle = "Your first note!"
+            let preloadNoteInfo = NoteInfo(title: noteTitle,
+                                           text: NSAttributedString())
             
             repository.createNote(using: preloadNoteInfo)
             defaults.set(true, forKey: haveBeenLoadedDefaultsKey)

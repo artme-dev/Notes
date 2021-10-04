@@ -16,9 +16,9 @@ protocol NotesRepositoryProtocol {
     
     func getNotes() -> [Note]?
     
-    func createNote(using: NoteInfo) -> Note?
+    @discardableResult func createNote(using: NoteInfo) -> Note?
     
-    func createEmptyNote() -> Note?
+    @discardableResult func createEmptyNote() -> Note?
     
     func edit(_: Note, using: NoteInfo)
     

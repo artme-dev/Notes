@@ -108,17 +108,13 @@ class NoteInfoVC: UIViewController {
     func configure(from viewData: NoteViewData) {
         noteTitle = viewData.title
         dateLabel.text = viewData.creationDate
-        
-        if let text = viewData.text {
-            let mutableAttributedString = NSMutableAttributedString(attributedString: text)
-            let textLength = text.string.count
-            mutableAttributedString.addAttribute(NSAttributedString.Key.font,
-                                                 value: Constants.textFont,
-                                                 range: NSRange(location: 0, length: textLength))
-            noteText = mutableAttributedString
-        }
+        noteText = viewData.text
         
         isTextPlaceholderActive = noteText != nil && noteText!.string.isEmpty
+    }
+    
+    private func addDefaultAttributes(to string: NSMutableAttributedString) {
+        
     }
     
     @objc func applyChanges() {

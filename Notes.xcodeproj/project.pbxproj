@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		280980DD2709539E00AD1781 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980DB2709539E00AD1781 /* Note+CoreDataClass.swift */; };
 		280980DE2709539E00AD1781 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980DC2709539E00AD1781 /* Note+CoreDataProperties.swift */; };
-		280980E0270A15A800AD1781 /* UIFontToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980DF270A15A800AD1781 /* UIFontToggleStyle.swift */; };
+		280980E2270AC69500AD1781 /* UIFontToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280980E1270AC69500AD1781 /* UIFontToggleStyle.swift */; };
 		28487FD0270461FC009C477B /* KeyboardObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28487FCF270461FC009C477B /* KeyboardObserving.swift */; };
 		285492BE2705A2F2005260B3 /* UITextViewFontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285492BD2705A2F2005260B3 /* UITextViewFontStyles.swift */; };
 		28C9347C2702F5D8003B96AC /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C9347B2702F5D8003B96AC /* UIViewConstraints.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		280980DB2709539E00AD1781 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		280980DC2709539E00AD1781 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		280980DF270A15A800AD1781 /* UIFontToggleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFontToggleStyle.swift; path = ../../../../../../Desktop/UIFontToggleStyle.swift; sourceTree = "<group>"; };
+		280980E1270AC69500AD1781 /* UIFontToggleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontToggleStyle.swift; sourceTree = "<group>"; };
 		28487FCF270461FC009C477B /* KeyboardObserving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserving.swift; sourceTree = "<group>"; };
 		285492BD2705A2F2005260B3 /* UITextViewFontStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewFontStyles.swift; sourceTree = "<group>"; };
 		28C9347B2702F5D8003B96AC /* UIViewConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			children = (
 				28C9347B2702F5D8003B96AC /* UIViewConstraints.swift */,
 				285492BD2705A2F2005260B3 /* UITextViewFontStyles.swift */,
-				280980DF270A15A800AD1781 /* UIFontToggleStyle.swift */,
+				280980E1270AC69500AD1781 /* UIFontToggleStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				28D3FE362701CB9300C33F8C /* AppDelegate.swift in Sources */,
 				28C934D22703410C003B96AC /* NoteTextViewDelegate.swift in Sources */,
 				28C934CE27031358003B96AC /* UIColorExtension.swift in Sources */,
-				280980E0270A15A800AD1781 /* UIFontToggleStyle.swift in Sources */,
+				280980E2270AC69500AD1781 /* UIFontToggleStyle.swift in Sources */,
 				28C934B7270301BB003B96AC /* NotesRepository.swift in Sources */,
 				28C934AB2702F992003B96AC /* Notes.xcdatamodeld in Sources */,
 				285492BE2705A2F2005260B3 /* UITextViewFontStyles.swift in Sources */,

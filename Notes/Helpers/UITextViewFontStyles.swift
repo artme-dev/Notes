@@ -74,4 +74,16 @@ extension UITextView {
                         in: selectedRange)
         delegate?.textViewDidChange?(self)
     }
+    
+    @objc func toggleBold() {
+        guard selectedRange.length != 0 else { return }
+        
+        let currentFont = getAttribute(for: NSAttributedString.Key.font, in: selectedRange)
+        guard
+            let currentFont = currentFont as? UIFont,
+            let updatedFont = currentFont.withToggledBoldStyle()
+        else { return }
+
+        setAttributesForSelectedText([.font: updatedFont])
+    }
 }
