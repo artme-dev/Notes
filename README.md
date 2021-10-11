@@ -18,6 +18,7 @@ Artme Kononov - artme.x@ya.ru
 Application is released under the MIT license. [See LICENSE](https://github.com/artme-dev/Notes/blob/main/LICENSE.txt) for details.
 
 
+
 [swift-image]: https://img.shields.io/badge/swift-5-blueviolet.svg
 [swift-url]: https://swift.org/
 [codebeat-image]:https://codebeat.co/badges/d7c9a6e9-c5a8-4631-ab34-e530a391b7fc
